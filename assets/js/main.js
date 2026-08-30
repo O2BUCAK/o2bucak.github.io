@@ -1,3 +1,12 @@
+const socialLinks = {
+  github: "https://github.com/O2BUCAK",
+  linkedin: "https://www.linkedin.com/in/ersinozbucak/",
+  x: "https://x.com/o2bucak",
+  instagram: "https://www.instagram.com/o2bucak/",
+  credly: "https://www.credly.com/users/o2bucak",
+  medium: "https://o2bucak.medium.com/"
+};
+
 const translations = {
   tr: {
     'nav.home': 'Home',
@@ -93,33 +102,33 @@ const translations = {
   }
 };
 
+function setSocialLinks() {
+  document.querySelectorAll('.socials a[data-social]').forEach(link => {
+    const key = link.dataset.social;
+    const url = socialLinks[key];
+    if (url) link.href = url;
+  });
+}
+
 function setLanguage(lang) {
-  document.documentElement.lang = lang;
+  const selectedLanguage = translations[lang] ? lang : 'tr';
+  document.documentElement.lang = selectedLanguage;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
-    if (translations[lang][key]) el.textContent = translations[lang][key];
-  });
-  document.querySelectorAll('.lang').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
-  localStorage.setItem('o2bucak-language', lang);
-}
-
-document.querySelectorAll('.lang').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
-document.getElementById('year').textContent = new Date().getFullYear();
-setLanguage(localStorage.getItem('o2bucak-language') || 'tr');
-const socialLinks = {
-    github: "https://github.com/O2BUCAK",
-    linkedin: "https://www.linkedin.com/in/ersinozbucak/",
-    x: "https://x.com/o2bucak",
-    instagram: "https://www.instagram.com/o2bucak/",
-    credly: "https://www.credly.com/users/o2bucak",
-    medium: "https://o2bucak.medium.com/"
-};
-function setSocialLinks() {
-  document.querySelectorAll('.socials a').forEach(link => {
-    const key = link.dataset.social;
-
-    if (socialLinks[key]) {
-      link.href = socialLinks[key];
+    if (translations[selectedLanguage][key]) {
+      el.textContent = translations[selectedLanguage][key];
     }
   });
+  document.querySelectorAll('.lang').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === selectedLanguage);
+  });
+  localStorage.setItem('o2bucak-language', selectedLanguage);
 }
+
+document.querySelectorAll('.lang').forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+});
+
+setSocialLinks();
+document.getElementById('year').textContent = new Date().getFullYear();
+setLanguage(localStorage.getItem('o2bucak-language') || 'tr');
