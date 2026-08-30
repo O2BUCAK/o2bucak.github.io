@@ -114,3 +114,12 @@ const socialLinks = {
     credly: "https://www.credly.com/users/o2bucak",
     medium: "https://o2bucak.medium.com/"
 };
+function setSocialLinks() {
+  document.querySelectorAll('.socials a').forEach(link => {
+    const key = link.dataset.social;
+
+    if (socialLinks[key]) {
+      link.href = socialLinks[key];
+    }
+  });
+}
