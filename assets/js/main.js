@@ -106,3 +106,11 @@ function setLanguage(lang) {
 document.querySelectorAll('.lang').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
 document.getElementById('year').textContent = new Date().getFullYear();
 setLanguage(localStorage.getItem('o2bucak-language') || 'tr');
+const socialLinks = {
+    github: "https://github.com/O2BUCAK",
+    linkedin: "https://www.linkedin.com/in/ersinozbucak/",
+    x: "https://x.com/o2bucak",
+    instagram: "https://www.instagram.com/o2bucak/",
+    credly: "https://www.credly.com/users/o2bucak",
+    medium: "https://o2bucak.medium.com/"
+};
