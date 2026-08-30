@@ -29,5 +29,19 @@ const translations = {
 
 function setSocialLinks(){document.querySelectorAll('.socials a[data-social]').forEach(link=>{const url=socialLinks[link.dataset.social];if(url)link.href=url;});}
 function setLanguage(lang){const selectedLanguage=translations[lang]?lang:'tr';document.documentElement.lang=selectedLanguage;document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(translations[selectedLanguage][key])el.textContent=translations[selectedLanguage][key];});document.querySelectorAll('.lang').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===selectedLanguage));localStorage.setItem('o2bucak-language',selectedLanguage);}
+
+function setupCertificationLightbox(){
+  const lightbox=document.getElementById('certLightbox');
+  const image=document.getElementById('certLightboxImage');
+  const title=document.getElementById('certLightboxTitle');
+  const closeButton=lightbox?.querySelector('.cert-lightbox-close');
+  if(!lightbox||!image||!title||!closeButton)return;
+  const close=()=>{lightbox.classList.remove('is-open');lightbox.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-open');image.src='';};
+  document.querySelectorAll('.cert-image-link').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();image.src=link.href;image.alt=link.dataset.certTitle||'Certificate';title.textContent=link.dataset.certTitle||'';lightbox.classList.add('is-open');lightbox.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open');closeButton.focus();}));
+  closeButton.addEventListener('click',close);
+  lightbox.addEventListener('click',event=>{if(event.target===lightbox)close();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&lightbox.classList.contains('is-open'))close();});
+}
+
 document.querySelectorAll('.lang').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
-setSocialLinks();document.getElementById('year').textContent=new Date().getFullYear();setLanguage(localStorage.getItem('o2bucak-language')||'tr');
+setSocialLinks();setupCertificationLightbox();document.getElementById('year').textContent=new Date().getFullYear();setLanguage(localStorage.getItem('o2bucak-language')||'tr');
