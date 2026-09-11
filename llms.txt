@@ -1,0 +1,13 @@
+# O2BUCAK — Ersin ÖZBUCAK
+
+O2BUCAK is the personal website of Ersin ÖZBUCAK, an IT Systems & Infrastructure professional. The site documents his experience, Enterprise Reference Architecture project, certifications and training, personal technology projects, and current areas of learning including Linux, open-source infrastructure, automation, cloud and AI infrastructure.
+
+- [Homepage](https://ersin.ozbucak.com.tr/)
+- [Enterprise Reference Architecture](https://ersin.ozbucak.com.tr/#architecture)
+- [VibeCoding Projects](https://ersin.ozbucak.com.tr/#vibecoding)
+- [Certifications & Learning](https://ersin.ozbucak.com.tr/#certifications)
+- [About](https://ersin.ozbucak.com.tr/#about)
+- [Contact](https://ersin.ozbucak.com.tr/contact.html)
+- [Privacy Policy](https://ersin.ozbucak.com.tr/privacy.html)
+- [GitHub](https://github.com/O2BUCAK)
+- [Medium](https://o2bucak.medium.com/)
