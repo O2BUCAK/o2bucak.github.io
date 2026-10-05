@@ -1,6 +1,6 @@
 # o2bucak.github.io
 
-Personal website of Ersin Özbuçak.
+Personal website of Ersin ÖZBUCAK.
 
 ## Structure
 
